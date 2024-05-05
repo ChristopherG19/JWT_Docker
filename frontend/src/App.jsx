@@ -1,18 +1,16 @@
 import './App.css'
-
-// Librerías necesarias para el frontend.
 import { useState } from 'react'
 import axios from 'axios'
 
-// Componente App principal en la aplicación.
 const App = () => {
+  // Se definen variables a utilizar durante ejecución
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [token, setToken] = useState('')
   const [message, setMessage] = useState('')
 
-  // Función para manejar el registro de usuarios.
-  const handleRegister = async () => {
+  // Función para manejar el registro
+  const Register = async () => {
     console.log(username, password)
     try {
       const response = await axios.post('http://localhost:5000/register', {
@@ -25,8 +23,8 @@ const App = () => {
     }
   }
 
-  // Función para manejar el login de usuarios.
-  const handleLogin = async () => {
+  // Función para manejar el login
+  const Login = async () => {
     console.log(username, password)
     try {
       const response = await axios.post('http://localhost:5000/login', {
@@ -35,16 +33,16 @@ const App = () => {
       })
       if (response.data.access_token) {
         setToken(response.data.access_token)
-        setMessage('Login successful')
+        setMessage('Login exitoso')
       } else {
-        setMessage('Could not login')
+        setMessage('Error en inicio de sesión')
       }
     } catch (error) {
       setMessage(error.response.data.message)
     }
   }
 
-  // Función para acceder a un recurso protegido.
+  // Función para acceder a un recurso protegido
   const handleProtected = async () => {
     try {
       const response = await axios.get('http://localhost:5000/protected', {
@@ -77,8 +75,14 @@ const App = () => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         />
-        <button className="btn" onClick={handleRegister}>Register</button>
-        <button className="btn" onClick={handleLogin}>Login</button>
+        <br></br>
+        <br></br>
+        <button className="btn" onClick={Register}>Register</button>
+        <br></br>
+        <br></br>
+        <button className="btn" onClick={Login}>Login</button>
+        <br></br>
+        <br></br>
       </div>
       {token && (
         <div>
@@ -91,6 +95,4 @@ const App = () => {
     </div>
   );
 }
-
-// Exportación del componente.
 export default App

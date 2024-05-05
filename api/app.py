@@ -4,6 +4,7 @@ from flask_cors import CORS
 import jwt
 from functools import wraps
 
+# Se crea la app, se agregan CORS y se define la secret_key
 app = Flask(__name__)
 CORS(app)
 app.config['JWT_SECRET_KEY'] = 'chris20541'
@@ -11,6 +12,7 @@ app.config['JWT_SECRET_KEY'] = 'chris20541'
 # Simular base de datos de usuarios
 users = {}
 
+# Se realiza evaluación de token, esta función sustituye la directiva @jwt_required proveniente de jwt.security
 def token_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -41,6 +43,7 @@ def register():
     username = data.get('username')
     password = data.get('password')
 
+    # Se revisa en la "base de datos"
     if username in users:
         return jsonify({'message': 'El usuario ya existe'}), 400
 
@@ -59,6 +62,7 @@ def login():
     if username not in users or not check_password_hash(users[username], password):
         return jsonify({'message': 'Credenciales inválidas'}), 401
     
+    # Se genera como el ejercicio anterior
     payload = {"username": username}
     token = jwt.encode(payload, app.config["JWT_SECRET_KEY"], algorithm="HS256")
     print(token)
