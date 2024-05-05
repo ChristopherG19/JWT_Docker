@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - '4200:4200'
+
+  api:
+    build: ./api
+    ports:
+      - "5000:5000"    
