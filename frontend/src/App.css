@@ -1,0 +1,17 @@
+/* App.css */
+
+/* Estilos para el contenedor principal */
+.container {
+  margin: 20px;
+}
+
+/* Estilos para los botones */
+button {
+  margin-right: 10px;
+}
+
+/* Estilos para el mensaje de error/success */
+.message {
+  margin-top: 10px;
+  color: rgb(219, 99, 13);
+}
