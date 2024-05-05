@@ -21,3 +21,5 @@ Docker-compose up
 #### Ejecución y requests
 ![image](https://github.com/ChristopherG19/JWT_Docker/assets/60325784/f871e41f-5518-4eb0-b63b-3d30c9756c17)
 
+#### Token Inválido
+![image](https://github.com/ChristopherG19/JWT_Docker/assets/60325784/9af5a66f-a44c-4afe-886b-1c276cbcc1b8)
